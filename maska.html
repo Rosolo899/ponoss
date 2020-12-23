@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Μάσκα και IPv4</title>
+    <link rel="stylesheet" type="text/css" href="maska.css" > <!-- λινκ για το αρχείο css-->
+</head>
+<body>
+  
+
+<form class="center" name="maska" action="#" onsubmit="required()" onsubmit="DecToBinary()"> <!-- αρχή της φόρμας -->
+
+    <fieldset>
+        <legend>Μάσκα και IPv4</legend>
+        
+        
+        <div class="text">
+            <p><li>Διεύθυνση IP</li></p>  <!-- αριστερό μέρος της φόρμας -->
+            <p><li>Μάσκα Δικτύου</li></p>
+        </div>
+
+        <div class="in">
+            <input type="text" maxlength="3" size="2" name="text1" id="ip1" >   <!-- είσοδος δεδομένων -->
+            - <input type="text" maxlength="3" size="2" name="text2" id="ip2">
+            - <input type="text" maxlength="3" size="2" name="text3" id="ip3" >
+            - <input type="text" maxlength="3" size="2" name="text4" id="ip4" >
+        <br><br>
+            
+            <input type="text" maxlength="3" size="2" name="text5" id="mask1" >
+            - <input type="text" maxlength="3" size="2" name="text6" id="mask2" >
+            - <input type="text" maxlength="3" size="2" name="text7" id="mask3" >
+            - <input type="text" maxlength="3" size="2" name="text8" id="mask4">
+
+        <br><br>
+            <input type="button" value="Submit" id="submit" onclick="AddRow();required()">
+            <input  type="reset" value="Reset">
+        </div>
+
+    </fieldset>
+   
+
+</form> <!-- τελος της φόρμας -->
+<br>
+<center>
+<table  id="show">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Διεύθυνση ΙΡ</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Μάσκα Δικτύου</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
+</center>
+
+
+<script>
+
+
+
+
+    var list1 = [];
+    var list2 = [];
+    var list3 = [];
+    var list4 = [];
+
+    var list5 = [];
+    var list6 = [];
+    var list7 = [];
+    var list8 = [];
+
+
+    var n = 1;
+    var x = 0;
+
+
+
+    function AddRow()
+    {
+        var empt1 = document.maska.text1.value;
+        var empt2 = document.maska.text2.value;
+        var empt3 = document.maska.text3.value;
+        var empt4 = document.maska.text4.value;
+        var empt5 = document.maska.text5.value;
+        var empt6 = document.maska.text6.value;
+        var empt7 = document.maska.text7.value;
+        var empt8 = document.maska.text8.value;
+        if (empt1== "" || empt2== "" || empt3== "" || empt4== "" || empt5== "" || empt6== "" || empt7== "" || empt8== "")
+        {
+            alert("Παρακαλώ συμπληρώστε όλα τα κενά");
+           
+        }
+        
+        if (empt1>255 || empt2>255 || empt3>255 || empt4>255 || empt5>255 || empt6>255 || empt7>255 || empt8>255)
+        {
+            alert("Εισάγετε αριθμό μικρότερο του 255");
+           
+        }
+
+
+        var AddRown = document.getElementById('show');
+        var NewRow = AddRown.insertRow(n);
+
+        var test = document.getElementById("ip1").value;
+        var test2 = document.getElementById("ip2").value;
+        var test3 = document.getElementById("ip3").value;
+        var test4 = document.getElementById("ip4").value;
+
+        var test5 = document.getElementById("mask1").value;
+        var test6 = document.getElementById("mask2").value;
+        var test7 = document.getElementById("mask3").value;
+        var test8 = document.getElementById("mask4").value;
+
+
+        list1[x] = Number(test).toString(2);
+        list2[x] = Number(test2).toString(2);
+        list3[x] = Number(test3).toString(2);
+        list4[x] = Number(test4).toString(2);
+        list5[x] = Number(test5).toString(2);
+        list6[x] = Number(test6).toString(2);
+        list7[x] = Number(test7).toString(2);
+        list8[x] = Number(test8).toString(2);
+
+        var cel1 = NewRow.insertCell(0);
+        var cel2 = NewRow.insertCell(1);
+        var cel3 = NewRow.insertCell(2);
+        var cel4 = NewRow.insertCell(3);
+        var cel5 = NewRow.insertCell(4);
+        var cel6 = NewRow.insertCell(5);
+        var cel7 = NewRow.insertCell(6);
+        var cel8 = NewRow.insertCell(7);
+
+        cel1.innerHTML = list1[x];
+        cel2.innerHTML = list2[x];
+        cel3.innerHTML = list3[x];
+        cel4.innerHTML = list4[x];
+        cel5.innerHTML = list5[x];
+        cel6.innerHTML = list6[x];
+        cel7.innerHTML = list7[x];
+        cel8.innerHTML = list8[x];
+
+        n++;
+        x++;
+    }
+    
+    
+      
+</script>
+
+
+
+
+</body>
+</html>
